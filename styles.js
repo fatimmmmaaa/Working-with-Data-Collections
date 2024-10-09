@@ -149,7 +149,9 @@ for (let i = 0; i < csvString.length; i++) {
 //part3: 
 let csvData3 = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26";
 let rows = csvData3.split('\n');
-let headers = rows[0].split(',').map(header => header.toLowerCase());
+let headers = rows[0].split(',').map(header => header.toLowerCase()); //convert to lowercase
+
+//variable
 let newArray = [];
 for (let i = 1; i < rows.length; i++) {
   let cells = rows[i].split(',');
@@ -158,13 +160,47 @@ for (let i = 1; i < rows.length; i++) {
   for (let j = 0; j < headers.length; j++) {
     rowObject[headers[j]] = cells[j];
   }
-newArray.push(rowObject);
+newArray.push(rowObject); 
 }
 
 console.log(newArray);
 
 
+// part 4
 
+//sorting; left bill
+let barry = { id: "48", name: "Barry", occupation: "Runner", age: "25" };
+newArray.splice(1, 0, barry);
+
+let bilbo = { id: "7", name: "Bilbo", occupation: "None", age: "111" };
+newArray.push(bilbo);
+
+// average age
+let totalAge = 0;
+for (let person of newArray) {
+  totalAge += parseInt(person.age);
+}
+
+let averageAge = totalAge / newArray.length; 
+
+// calculate
+console.log(newArray);
+console.log(`Average age: ${averageAge}`);
+
+//part 5:
+//variable
+let finalCsv = '';
+
+//data row
+finalCsv += Object.keys(newArray[0]).join(',') + '\n';
+
+for (const obj of newArray) {
+  finalCsv += Object.values(obj).join(',') + '\n';
+}
+
+finalCsv = finalCsv.trim();
+
+console.log("Final Part:\n", finalCsv);
 
 
 
