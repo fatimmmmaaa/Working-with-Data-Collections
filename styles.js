@@ -99,9 +99,76 @@ for (let i = 0; i < csvString.length; i++) {
     (currentCell === 4 && csvString[i + 1] === '\n') ||
     i + 1 === csvString.length
   ) {
-    console.log(cell1, cell2, cell3, cell4);
+    // console.log(cell1, cell2, cell3, cell4);
   }
 }
+
+
+// // part 2:
+// // Variables
+// let csvData = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26";
+// let cell = "";
+// let rows = [];
+
+// //first row of data
+// for(let char of csvData) {
+//   if (char === ',') {
+//     rows.push(cell);
+//     cell='';
+//   } else if (char === '\n') {
+//     rows.push(cell);
+//     console.log(rows);
+//     rows = [];
+//     cell = '';
+//   } else {
+//     cell += char;
+//   }
+// }
+
+// //variable
+// let newArr = [];
+
+// for(let char of newArr){
+//   if (char === ',') {
+//     rows.push(cell);
+//     cell='';
+//   } else if (char === '\n'){
+//     rows.push(cell);
+//     newArray.push(rows);
+//     rows=[];
+//     cell='';  
+//   } else {
+//     cell += char;
+//   }
+// }
+
+// console.log(newArr);
+
+
+
+//part3: 
+let csvData3 = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor's Assistant,26";
+let rows = csvData3.split('\n');
+let headers = rows[0].split(',').map(header => header.toLowerCase());
+let newArray = [];
+for (let i = 1; i < rows.length; i++) {
+  let cells = rows[i].split(',');
+  let rowObject = {};
+
+  for (let j = 0; j < headers.length; j++) {
+    rowObject[headers[j]] = cells[j];
+  }
+newArray.push(rowObject);
+}
+
+console.log(newArray);
+
+
+
+
+
+
+
 
 
 
